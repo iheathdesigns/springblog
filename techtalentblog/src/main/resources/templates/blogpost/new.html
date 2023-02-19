@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!-- We want to add support for thymeleaf which creates html tags and properties-->
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Create a New Blog</title>
+		<th:block th:replace="/fragments/bootstrap::head"></th:block>
+	</head>
+	<body>
+	<div th:replace="/fragments/navbar"></div>
+		<div class="container">
+			<h1>Create a New Blog Post</h1>
+			<p>Please use the form below to submit a Blog Post:</p>
+			<form th:action="@{/blogposts}" method="post" th:object="${blogPost}">
+			
+				<div class="form-group">
+					<input type="text" th:field="*{title}"
+							placeholder="Blog Title..." class="form-control" />
+				</div>
+				<div class="form-group">
+					<input type="text" th:field="*{author}"
+							placeholder="Your Name Here..." class="form-control" />
+				</div>
+				<div class="form-group">
+					<input type="text" th:field="*{blogEntry}"
+							placeholder="Blog Entry..." class="form-control" />
+				</div>
+				<button class="btn btn-primary" type="submit">Submit your post</button>
+				
+			</form>
+		</div>
+		<th:block th:replace="/fragments/bootstrap::end"></th:block>
+	</body>
+</html>
